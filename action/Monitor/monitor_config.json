@@ -1,0 +1,19 @@
+{
+    "warning_rules": {
+        "highfreq_threshold": 0.8236,
+        "diversity_threshold": 25333.93,
+        "meteor_threshold": 0.3727,
+        "diversity_change_threshold": 0.5513,
+        "highfreq_change_threshold": 0.2373,
+        "relation_residual_threshold": 1.5585
+    },
+    "monitoring": {
+        "check_interval": 10,
+        "history_window": 20,
+        "warning_level_thresholds": [1, 2, 3]
+    },
+    "output": {
+        "log_dir": "d:\\Documents\\100\\action\\results\\monitor_logs",
+        "visualization": true
+    }
+}
