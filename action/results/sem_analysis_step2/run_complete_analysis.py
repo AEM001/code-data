@@ -3,11 +3,16 @@ import subprocess
 import time
 import sys
 
-# 设置工作目录
-data_dir = r"d:\Documents\100\action"
-# 修改输出目录为results下的sem_analysis_results子目录
-output_dir = r"d:\Documents\100\action\results\sem_analysis_results"
+# 修改：使用当前脚本所在目录作为脚本目录
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# 设置工作目录为当前目录
+data_dir = current_dir
+# 设置输出目录为当前目录
+output_dir = current_dir
 os.makedirs(output_dir, exist_ok=True)
+
+print(f"脚本目录: {data_dir}")
+print(f"输出目录: {output_dir}")
 
 # 设置matplotlib使用支持中文的字体
 def setup_chinese_font():
@@ -51,8 +56,8 @@ try:
     env["SEM_OUTPUT_DIR"] = output_dir
     env["MATPLOTLIBRC"] = os.path.join(data_dir, "matplotlibrc")
     
-    # 运行模型评估脚本
-    result = subprocess.run(["python", os.path.join(data_dir, "sem_model_evaluation.py")], 
+    # 修改：使用当前目录中的脚本文件
+    result = subprocess.run(["python", os.path.join(current_dir, "sem_model_evaluation.py")], 
                            check=True, env=env, capture_output=True, text=True)
     print(result.stdout)
     if result.stderr:
@@ -79,8 +84,8 @@ try:
     env["SEM_OUTPUT_DIR"] = output_dir
     env["MATPLOTLIBRC"] = os.path.join(data_dir, "matplotlibrc")
     
-    # 运行交叉验证和多组分析脚本
-    result = subprocess.run(["python", os.path.join(data_dir, "sem_cross_validation.py")], 
+    # 修改：使用当前目录中的脚本文件
+    result = subprocess.run(["python", os.path.join(current_dir, "sem_cross_validation.py")], 
                            check=True, env=env, capture_output=True, text=True)
     print(result.stdout)
     if result.stderr:
@@ -107,8 +112,8 @@ try:
     env["SEM_OUTPUT_DIR"] = output_dir
     env["MATPLOTLIBRC"] = os.path.join(data_dir, "matplotlibrc")
     
-    # 运行分析报告生成脚本
-    result = subprocess.run(["python", os.path.join(data_dir, "sem_analysis_report.py")], 
+    # 修改：使用当前目录中的脚本文件
+    result = subprocess.run(["python", os.path.join(current_dir, "sem_analysis_report.py")], 
                            check=True, env=env, capture_output=True, text=True)
     print(result.stdout)
     if result.stderr:
